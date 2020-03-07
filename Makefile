@@ -11,3 +11,7 @@ test:
 	nancy go.sum
 	go test -race ./...
 .PHONY: test
+
+dynamodb-local:
+	docker run -d -p 8000:8000 -v $(PWD)/local/dynamodb:/data/ amazon/dynamodb-local -jar DynamoDBLocal.jar -sharedDb -dbPath /data
+.PHONY: dynamodb
